@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .product-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
   
@@ -11,7 +31,7 @@
 <h1>Gestion des Produits</h1>
 
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     
@@ -30,6 +50,7 @@
 <table border="1">
     <thead>
         <tr>
+            <th>Image</th>
             <th>Nom</th>
             <th>Description</th>
             <th>Prix</th>
@@ -40,9 +61,12 @@
     <tbody>
         {% for product in products %}
         <tr>
+            <td>
+                <img src="{{ product.get_image_url }}" alt="{{ product.name }}" class="product-image">
+            </td>
             <td>{{ product.name }}</td>
             <td>{{ product.description }}</td>
-            <td>{{ product.price }}</td>
+            <td>{{ product.price }}€</td>
             <td>{{ product.stock }}</td>
             <td>
                 <!-- Modifier -->

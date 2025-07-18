@@ -6,7 +6,11 @@ from rest_framework.response import Response
 from .serializers import ProductSerializer
 # # Create your views here.
 def index(request):
-    return render(request,'products/products.html')
+    products = Product.objects.all()
+    context = {
+        'products': products,
+    }
+    return render(request,'products/products.html', context)
 
 
 def product_dashboard(request):
@@ -16,7 +20,7 @@ def product_dashboard(request):
 
     if request.method == 'POST':
         if 'add' in request.POST:
-            form = ProductForm(request.POST)
+            form = ProductForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
                 return redirect('product_dashboard')
@@ -28,7 +32,7 @@ def product_dashboard(request):
 
         elif 'save_edit' in request.POST:
             product = get_object_or_404(Product, pk=request.POST.get('save_edit'))
-            form = ProductForm(request.POST, instance=product)
+            form = ProductForm(request.POST, request.FILES, instance=product)
             if form.is_valid():
                 form.save()
                 return redirect('product_dashboard')
