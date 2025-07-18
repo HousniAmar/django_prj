@@ -141,7 +141,7 @@ class Notification(models.Model):
 
 3. **Create Sample Data** (already included):
    ```bash
-   python manage.py shell -c "from products.models import Product; from notifications.models import Notification; ..."
+   python3 manage.py shell -c "from products.models import Product; from notifications.models import Notification; ..."
    ```
 
 4. **Start Server**:
