@@ -12,7 +12,6 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <!-- <link href="css/styles.css" rel="stylesheet" /> -->
         <link rel="stylesheet" href="{% static 'boost/css/styles.css' %}">
         
     </head>
@@ -36,235 +35,365 @@
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                    <div class="d-flex">
+                        <!-- Notifications dropdown -->
+                        <div class="dropdown me-3">
+                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi-bell me-1"></i>
+                                Notifications
+                                <span id="notification-badge" class="badge bg-danger text-white ms-1 rounded-pill" style="display: none;">0</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown" style="width: 300px; max-height: 400px; overflow-y: auto;">
+                                <li><h6 class="dropdown-header">Notifications</h6></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <div id="notifications-list">
+                                    <li><span class="dropdown-item-text text-muted">No notifications</span></li>
+                                </div>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><button class="dropdown-item text-primary" onclick="markAllNotificationsRead()">Mark all as read</button></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Cart button -->
+                        <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span id="cart-badge" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </nav>
+        
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <p class="lead fw-normal text-white-50 mb-0">With this shop homepage template</p>
                 </div>
             </div>
         </header>
+        
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $40.00 - $80.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Popular Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    $40.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $120.00 - $280.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Popular Item</h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    $40.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
-                            </div>
+                <div id="products-container" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <!-- Products will be loaded dynamically -->
+                    <div class="col-12 text-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Cart Offcanvas -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="cartOffcanvasLabel">Shopping Cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="cart-items">
+                    <div class="text-center text-muted">
+                        <i class="bi-cart3 fs-1"></i>
+                        <p>Your cart is empty</p>
+                    </div>
+                </div>
+                <div id="cart-summary" style="display: none;">
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <strong>Total: $<span id="cart-total">0.00</span></strong>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-primary w-100 mb-2">Checkout</button>
+                        <button class="btn btn-outline-danger w-100" onclick="clearCart()">Clear Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
+        
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="{% static 'boost/js/scripts.js' %}"></script>
+        
+        <!-- Custom JavaScript for cart and notifications -->
+        <script>
+            // Global variables
+            let currentCart = { items: [], total_items: 0, total_price: 0 };
+            let currentNotifications = [];
+
+            // API Helper functions
+            async function apiCall(url, method = 'GET', data = null) {
+                const options = {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken'),
+                    },
+                };
+                
+                if (data) {
+                    options.body = JSON.stringify(data);
+                }
+                
+                try {
+                    const response = await fetch(url, options);
+                    return await response.json();
+                } catch (error) {
+                    console.error('API call failed:', error);
+                    return null;
+                }
+            }
+
+            // Get CSRF token
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+
+            // Load products
+            async function loadProducts() {
+                const products = await apiCall('/products/api/products/');
+                if (products) {
+                    displayProducts(products);
+                }
+            }
+
+            // Display products
+            function displayProducts(products) {
+                const container = document.getElementById('products-container');
+                container.innerHTML = '';
+                
+                products.forEach(product => {
+                    const productCard = `
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                ${product.price < 30 ? '<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>' : ''}
+                                <img class="card-img-top" src="${product.image || 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg'}" alt="${product.name}" />
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <h5 class="fw-bolder">${product.name}</h5>
+                                        <p class="text-muted">${product.description}</p>
+                                        <div class="text-warning mb-2">
+                                            ${'★'.repeat(5)}
+                                        </div>
+                                        <span class="fw-bold">$${parseFloat(product.price).toFixed(2)}</span>
+                                        <br><small class="text-muted">Stock: ${product.stock}</small>
+                                    </div>
+                                </div>
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <div class="text-center">
+                                        <button class="btn btn-outline-dark mt-auto" onclick="addToCart(${product.id})" 
+                                                ${product.stock === 0 ? 'disabled' : ''}>
+                                            ${product.stock === 0 ? 'Out of Stock' : 'Add to cart'}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += productCard;
+                });
+            }
+
+            // Cart functions
+            async function addToCart(productId, quantity = 1) {
+                const result = await apiCall('/api/cart/add/', 'POST', {
+                    product_id: productId,
+                    quantity: quantity
+                });
+                
+                if (result) {
+                    if (result.error) {
+                        alert(result.error);
+                    } else {
+                        currentCart = result;
+                        updateCartUI();
+                        createNotification('Cart', `Product added to cart successfully!`, 'cart');
+                    }
+                }
+            }
+
+            async function updateCartItemQuantity(itemId, quantity) {
+                const result = await apiCall(`/api/cart/item/${itemId}/update/`, 'PUT', {
+                    quantity: quantity
+                });
+                
+                if (result) {
+                    if (result.error) {
+                        alert(result.error);
+                    } else {
+                        currentCart = result;
+                        updateCartUI();
+                    }
+                }
+            }
+
+            async function removeFromCart(itemId) {
+                const result = await apiCall(`/api/cart/item/${itemId}/remove/`, 'DELETE');
+                if (result) {
+                    currentCart = result;
+                    updateCartUI();
+                }
+            }
+
+            async function clearCart() {
+                const result = await apiCall('/api/cart/clear/', 'DELETE');
+                if (result) {
+                    currentCart = result;
+                    updateCartUI();
+                }
+            }
+
+            async function loadCart() {
+                const cart = await apiCall('/api/cart/');
+                if (cart) {
+                    currentCart = cart;
+                    updateCartUI();
+                }
+            }
+
+            // Update cart UI
+            function updateCartUI() {
+                const cartBadge = document.getElementById('cart-badge');
+                const cartItems = document.getElementById('cart-items');
+                const cartSummary = document.getElementById('cart-summary');
+                const cartTotal = document.getElementById('cart-total');
+                
+                cartBadge.textContent = currentCart.total_items || 0;
+                cartTotal.textContent = parseFloat(currentCart.total_price || 0).toFixed(2);
+                
+                if (currentCart.items && currentCart.items.length > 0) {
+                    cartItems.innerHTML = '';
+                    currentCart.items.forEach(item => {
+                        const cartItem = `
+                            <div class="card mb-2">
+                                <div class="card-body p-2">
+                                    <h6 class="card-title mb-1">${item.product.name}</h6>
+                                    <p class="card-text text-muted mb-2">$${parseFloat(item.product.price).toFixed(2)} each</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <button class="btn btn-outline-secondary" onclick="updateCartItemQuantity(${item.id}, ${item.quantity - 1})" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+                                            <span class="btn btn-outline-secondary disabled">${item.quantity}</span>
+                                            <button class="btn btn-outline-secondary" onclick="updateCartItemQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                                        </div>
+                                        <div>
+                                            <strong>$${parseFloat(item.total_price).toFixed(2)}</strong>
+                                            <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeFromCart(${item.id})">
+                                                <i class="bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        cartItems.innerHTML += cartItem;
+                    });
+                    cartSummary.style.display = 'block';
+                } else {
+                    cartItems.innerHTML = `
+                        <div class="text-center text-muted">
+                            <i class="bi-cart3 fs-1"></i>
+                            <p>Your cart is empty</p>
+                        </div>
+                    `;
+                    cartSummary.style.display = 'none';
+                }
+            }
+
+            // Notification functions
+            async function loadNotifications() {
+                const notifications = await apiCall('/api/notifications/unread/');
+                if (notifications) {
+                    currentNotifications = notifications.notifications;
+                    updateNotificationsUI(notifications.count);
+                }
+            }
+
+            async function createNotification(title, message, type = 'general') {
+                await apiCall('/api/notifications/create/', 'POST', {
+                    title: title,
+                    message: message,
+                    notification_type: type
+                });
+                loadNotifications(); // Reload notifications
+            }
+
+            async function markNotificationRead(notificationId) {
+                await apiCall(`/api/notifications/${notificationId}/read/`, 'PUT');
+                loadNotifications();
+            }
+
+            async function markAllNotificationsRead() {
+                await apiCall('/api/notifications/mark-all-read/', 'PUT');
+                loadNotifications();
+            }
+
+            // Update notifications UI
+            function updateNotificationsUI(unreadCount) {
+                const notificationBadge = document.getElementById('notification-badge');
+                const notificationsList = document.getElementById('notifications-list');
+                
+                if (unreadCount > 0) {
+                    notificationBadge.textContent = unreadCount;
+                    notificationBadge.style.display = 'inline';
+                } else {
+                    notificationBadge.style.display = 'none';
+                }
+                
+                if (currentNotifications.length > 0) {
+                    notificationsList.innerHTML = '';
+                    currentNotifications.forEach(notification => {
+                        const notificationItem = `
+                            <li>
+                                <div class="dropdown-item-text">
+                                    <div class="d-flex justify-content-between">
+                                        <strong>${notification.title}</strong>
+                                        <small class="text-muted">${new Date(notification.created_at).toLocaleDateString()}</small>
+                                    </div>
+                                    <p class="mb-1">${notification.message}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <span class="badge bg-${notification.notification_type === 'cart' ? 'primary' : notification.notification_type === 'product' ? 'success' : 'secondary'}">${notification.notification_type}</span>
+                                        <button class="btn btn-sm btn-outline-primary" onclick="markNotificationRead(${notification.id})">Mark Read</button>
+                                    </div>
+                                </div>
+                            </li>
+                        `;
+                        notificationsList.innerHTML += notificationItem;
+                    });
+                } else {
+                    notificationsList.innerHTML = '<li><span class="dropdown-item-text text-muted">No notifications</span></li>';
+                }
+            }
+
+            // Initialize the page
+            document.addEventListener('DOMContentLoaded', function() {
+                loadProducts();
+                loadCart();
+                loadNotifications();
+                
+                // Refresh notifications every 30 seconds
+                setInterval(loadNotifications, 30000);
+            });
+        </script>
     </body>
 </html>

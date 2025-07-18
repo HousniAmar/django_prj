@@ -1,6 +1,9 @@
 from django.shortcuts import render,get_object_or_404, redirect
 from .models import Product
 from .forms import ProductForm
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import ProductSerializer
 # # Create your views here.
 def index(request):
     return render(request,'products/products.html')
@@ -42,3 +45,10 @@ def product_dashboard(request):
         'editing_product': editing_product,
     }
     return render(request, 'products/dashboard.html', context)
+
+@api_view(['GET'])
+def get_products(request):
+    """Get all products"""
+    products = Product.objects.all()
+    serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
