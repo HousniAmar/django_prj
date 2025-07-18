@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+<a href="{% url 'products' %}">product page</a>
+<h1>Gestion des Produits</h1>
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    {% if editing_product %}
+        <input type="hidden" name="save_edit" value="{{ editing_product.id }}">
+        <button type="submit">Enregistrer les modifications</button>
+        <a href="{% url 'product_dashboard' %}">Annuler</a>
+    {% else %}
+        <button type="submit" name="add">Ajouter</button>
+    {% endif %}
+</form>
+
+<hr>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+            <td>
+                <!-- Modifier -->
+                <form method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="edit_id" value="{{ product.id }}">Modifier</button>
+                </form>
+
+                <!-- Supprimer -->
+                <form method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="delete" value="{{ product.id }}">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</table>
+
+    
+</body>
+</html>
